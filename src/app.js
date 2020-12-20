@@ -18,11 +18,16 @@ app.get('/students', async (req, res) => {
 // Add student to database
 app.post('/students', async (req, res) =>{
     // write your codes here
+    let std = new Student(req.body);
+
+    std.save().then(std => res.send(std)).catch(err => res.send(err.message));
 })
 
 // Get specific student
 app.get('/students/:id', async (req, res) =>{
     // write your codes here
+    const id = req.params.id;
+    Student.findById(id).then(result => res.send(result)).catch(err => res.send(err.message));
 })
 
 // delete specific student
