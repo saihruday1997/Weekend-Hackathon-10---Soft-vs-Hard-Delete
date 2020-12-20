@@ -33,6 +33,22 @@ app.get('/students/:id', async (req, res) =>{
 // delete specific student
 app.delete('/students/:id', async (req, res) =>{
     // write your codes here
+    const type = req.query.type;
+    const id = req.params.id;
+
+    if(!type){
+        return;
+    }
+
+    if(type === "soft"){
+
+    }
+
+    if(type === "hard"){
+        Student.findByIdAndDelete(id).then(() => res.send(id)).catch(err => res.send(err.message));
+    }
+
+
 }) 
 
 
