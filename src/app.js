@@ -12,6 +12,7 @@ app.use(express.json());
 // Get all the students
 app.get('/students', async (req, res) => {
     // write your codes here
+    Student.find().then(result => res.send(result)).catch(err => res.send(err.message));
 })
 
 // Add student to database
